@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Die Comedy Hypnose Show – Lachen & Staunen garantiert! Erlebe die spektakulärste Hypnose-Show Deutschlands live auf der Bühne. Jetzt Tickets sichern!">
+  <meta name="keywords" content="Comedy Hypnose Show, Hypnose, Show, Deutschland, Tournee, Tickets, Live">
+  <meta property="og:title" content="Comedy Hypnose Show – Lachen & Staunen Garantiert!">
+  <meta property="og:description" content="Die spektakulärste Hypnose-Show Deutschlands. Live auf der Bühne. Jetzt Tickets sichern!">
+  <meta property="og:image" content="HERO%20BILD%20MIT%20LOGO%20TEXT%20UND%20BUTTON.jpg">
+  <title>Comedy Hypnose Show – Lachen & Staunen Garantiert!</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f0d060;
+      --gold-dark: #a07828;
+      --red: #cc1111;
+      --red-bright: #ff2222;
+      --purple-deep: #0a0015;
+      --purple-dark: #120025;
+      --purple-mid: #1e0040;
+      --purple-light: #2d0060;
+      --white: #ffffff;
+      --grey-light: #d0c0e0;
+      --grey-mid: #8070a0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Raleway', sans-serif;
+      background: var(--purple-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ─── CANVAS STARS ─── */
+    #stars-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      background: rgba(10, 0, 21, 0);
+      transition: background 0.4s, backdrop-filter 0.4s, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(10, 0, 21, 0.92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 30px rgba(212, 175, 55, 0.15);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    .nav-logo img { height: 44px; filter: drop-shadow(0 0 8px rgba(212,175,55,0.5)); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--grey-light);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: linear-gradient(135deg, #cc1111, #ff3333);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(204,17,17,0.5);
+      transition: transform 0.2s, box-shadow 0.2s !important;
+    }
+    .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(204,17,17,0.7) !important; color: #fff !important; }
+    .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-hamburger span { display: block; width: 26px; height: 2px; background: var(--gold); border-radius: 2px; transition: 0.3s; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      width: 100%;
+      z-index: 1;
+    }
+    .hero-img-wrap {
+      position: relative;
+      width: 100%;
+      line-height: 0;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 35%;
+      background: linear-gradient(to top, rgba(10,0,21,1) 0%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 5% 60px;
+      text-align: center;
+      margin-top: -80px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212,175,55,0.15);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s ease both;
+    }
+    .hero-badge::before { content: '✦'; animation: spin 4s linear infinite; }
+    .hero-cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeInDown 0.8s 0.2s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #e8a000, #d4af37, #f0c040);
+      color: #1a0a00;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 18px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 40px rgba(212,175,55,0.5), 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.4s;
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 60px rgba(212,175,55,0.7), 0 12px 40px rgba(0,0,0,0.5); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Raleway', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 18px 36px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.08); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      animation: fadeIn 2s 1.5s ease both;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(212,175,55,0.6), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    /* ─── SECTIONS ─── */
+    section { position: relative; z-index: 1; }
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .section-label::before, .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold));
+    }
+    .section-label::after { background: linear-gradient(to left, transparent, var(--gold)); }
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+    .section-title span { color: var(--gold); }
+    .section-subtitle {
+      text-align: center;
+      color: var(--grey-light);
+      font-size: 1.05rem;
+      font-weight: 300;
+      max-width: 620px;
+      margin: 0 auto 60px;
+      line-height: 1.8;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ─── STATS BAR ─── */
+    #stats {
+      background: linear-gradient(135deg, rgba(212,175,55,0.12), rgba(212,175,55,0.04));
+      border-top: 1px solid rgba(212,175,55,0.25);
+      border-bottom: 1px solid rgba(212,175,55,0.25);
+      padding: 48px 5%;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(212,175,55,0.2);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); }
+
+    /* ─── ABOUT ─── */
+    #about { padding: 120px 5%; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .about-image-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, var(--gold), transparent 50%, var(--red) 100%);
+      border-radius: 6px;
+      z-index: 0;
+    }
+    .about-image-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(212,175,55,0.3);
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .about-content { }
+    .about-features {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 36px;
+    }
+    .about-feature {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+    .about-feature-icon {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(212,175,55,0.05));
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .about-feature-text h4 { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 600; color: var(--gold); margin-bottom: 4px; }
+    .about-feature-text p { font-size: 0.9rem; color: var(--grey-light); line-height: 1.6; }
+
+    /* ─── GALLERY ─── */
+    #gallery { padding: 120px 5%; background: linear-gradient(to bottom, transparent, rgba(18,0,37,0.5), transparent); }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item:first-child {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.85) saturate(1.1);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,0,21,0.7) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1.3); }
+    .gallery-item:hover::after { opacity: 1; }
+    .gallery-item .gallery-label {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      z-index: 1;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .gallery-item:hover .gallery-label { opacity: 1; transform: translateY(0); }
+
+    /* ─── EXPERIENCE ─── */
+    #experience {
+      padding: 120px 5%;
+      background: radial-gradient(ellipse at center, rgba(30,0,64,0.6) 0%, transparent 70%);
+    }
+    .experience-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .exp-card {
+      background: linear-gradient(135deg, rgba(30,0,64,0.6), rgba(18,0,37,0.4));
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 4px;
+      padding: 40px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .exp-card:hover { transform: translateY(-8px); border-color: rgba(212,175,55,0.5); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(212,175,55,0.1); }
+    .exp-card:hover::before { opacity: 1; }
+    .exp-icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .exp-card h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); margin-bottom: 12px; }
+    .exp-card p { font-size: 0.9rem; color: var(--grey-light); line-height: 1.7; }
+
+    /* ─── TICKETS ─── */
+    #tickets { padding: 120px 5%; }
+    .tickets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr 1fr;
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ticket-card {
+      background: linear-gradient(145deg, rgba(20,0,45,0.8), rgba(10,0,20,0.6));
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 4px;
+      padding: 44px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .ticket-card.featured {
+      border-color: var(--gold);
+      background: linear-gradient(145deg, rgba(40,10,80,0.9), rgba(20,5,40,0.8));
+      transform: scale(1.04);
+      box-shadow: 0 0 60px rgba(212,175,55,0.2), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .ticket-card.featured::before {
+      content: 'EMPFOHLEN';
+      position: absolute;
+      top: 18px;
+      right: -30px;
+      background: linear-gradient(135deg, var(--gold), #f0c040);
+      color: #1a0a00;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      padding: 5px 44px;
+      transform: rotate(45deg);
+    }
+    .ticket-card:hover:not(.featured) { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+    .ticket-card.featured:hover { transform: scale(1.04) translateY(-6px); }
+    .ticket-tier {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .ticket-price {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+    .ticket-price span { font-size: 1.5rem; vertical-align: top; margin-top: 8px; display: inline-block; color: var(--gold); }
+    .ticket-note { font-size: 0.78rem; color: var(--grey-mid); margin-bottom: 32px; }
+    .ticket-features { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 12px; }
+    .ticket-features li { font-size: 0.88rem; color: var(--grey-light); display: flex; align-items: center; gap: 10px; justify-content: center; }
+    .ticket-features li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+    .ticket-features li.no::before { content: '–'; color: var(--grey-mid); }
+    .ticket-features li.no { opacity: 0.5; }
+    .btn-ticket {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border-radius: 3px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .btn-ticket-gold {
+      background: linear-gradient(135deg, #d4af37, #f0c040, #a07828);
+      color: #1a0a00;
+      box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+    }
+    .btn-ticket-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,175,55,0.6); }
+    .btn-ticket-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+    }
+    .btn-ticket-outline:hover { background: rgba(212,175,55,0.1); transform: translateY(-2px); }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      padding: 120px 5%;
+      background: linear-gradient(to bottom, rgba(18,0,37,0.4), transparent);
+    }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testi-card {
+      background: linear-gradient(145deg, rgba(25,0,55,0.6), rgba(15,0,30,0.5));
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 4px;
+      padding: 36px 28px;
+      position: relative;
+    }
+    .testi-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: rgba(212,175,55,0.15);
+      line-height: 1;
+    }
+    .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+    .testi-text {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--grey-light);
+      line-height: 1.8;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-light), var(--red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .testi-name { font-weight: 700; font-size: 0.9rem; color: #fff; }
+    .testi-city { font-size: 0.78rem; color: var(--grey-mid); }
+
+    /* ─── TOUR DATES ─── */
+    #tour { padding: 120px 5%; }
+    .tour-header { text-align: center; margin-bottom: 60px; }
+    .tour-list {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .tour-item {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 36px;
+      border-bottom: 1px solid rgba(212,175,55,0.12);
+      transition: background 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .tour-item:first-child { border-top: 1px solid rgba(212,175,55,0.12); }
+    .tour-item:hover {
+      background: rgba(212,175,55,0.06);
+    }
+    .tour-date {
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .tour-date-day {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .tour-date-month {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-mid);
+    }
+    .tour-info {}
+    .tour-city {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .tour-venue {
+      font-size: 0.85rem;
+      color: var(--grey-mid);
+    }
+    .tour-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 30px;
+      white-space: nowrap;
+    }
+    .badge-available {
+      background: rgba(0, 200, 100, 0.15);
+      border: 1px solid rgba(0,200,100,0.3);
+      color: #00c864;
+    }
+    .badge-limited {
+      background: rgba(255,140,0,0.15);
+      border: 1px solid rgba(255,140,0,0.3);
+      color: #ff8c00;
+    }
+    .badge-sold {
+      background: rgba(200,0,0,0.15);
+      border: 1px solid rgba(200,0,0,0.3);
+      color: #cc3333;
+    }
+    .tour-cta {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: #1a0a00;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 12px 22px;
+      border-radius: 3px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .tour-cta:hover { transform: scale(1.04); box-shadow: 0 0 20px rgba(212,175,55,0.5); }
+    .tour-item-inner {
+      display: contents;
+    }
+
+    /* ─── ARTIST ─── */
+    #artist {
+      padding: 120px 5%;
+      background: linear-gradient(135deg, rgba(20,0,40,0.5), transparent);
+    }
+    .artist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .artist-image-wrap {
+      position: relative;
+    }
+    .artist-image-wrap img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 0 40px rgba(212,175,55,0.2));
+    }
+    .artist-glow {
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(ellipse, rgba(204,17,17,0.15) 0%, transparent 70%);
+      z-index: 0;
+    }
+    .artist-content {}
+    .artist-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .artist-title-text {
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      margin-bottom: 28px;
+    }
+    .artist-bio {
+      font-size: 0.95rem;
+      color: var(--grey-light);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .artist-facts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+    .artist-fact {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--grey-light);
+    }
+    .artist-fact::before { content: '✦'; color: var(--gold); font-size: 0.6rem; flex-shrink: 0; }
+
+    /* ─── FAQ ─── */
+    #faq { padding: 100px 5%; }
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid rgba(212,175,55,0.15);
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(212,175,55,0.15); }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 4px;
+      cursor: pointer;
+      gap: 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      user-select: none;
+      transition: color 0.3s;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--gold);
+      transition: transform 0.3s, background 0.3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: rgba(212,175,55,0.1); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      color: var(--grey-light);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      padding: 0 4px;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-bottom: 22px; }
+
+    /* ─── FINAL CTA ─── */
+    #final-cta {
+      padding: 140px 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(204,17,17,0.12) 0%, rgba(212,175,55,0.06) 40%, transparent 70%);
+    }
+    .final-cta-content { position: relative; z-index: 1; }
+    .final-cta-eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .final-cta-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff, #f0d060);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .final-cta-sub { font-size: 1.1rem; color: var(--grey-light); margin-bottom: 50px; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: rgba(5,0,12,0.95);
+      border-top: 1px solid rgba(212,175,55,0.15);
+      padding: 60px 5% 30px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 50px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-logo img { height: 40px; margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(212,175,55,0.3)); }
+    .footer-desc { font-size: 0.85rem; color: var(--grey-mid); line-height: 1.7; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey-light);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(212,175,55,0.08); }
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a {
+      color: var(--grey-mid);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover { color: var(--grey-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-copy { font-size: 0.8rem; color: var(--grey-mid); }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 0.8rem; color: var(--grey-mid); text-decoration: none; transition: color 0.3s; }
+    .footer-legal a:hover { color: var(--grey-light); }
+
+    /* ─── MOBILE NAV MENU ─── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(10,0,21,0.97);
+      backdrop-filter: blur(20px);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-close {
+      position: absolute;
+      top: 24px;
+      right: 30px;
+      font-size: 2rem;
+      color: var(--grey-mid);
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    /* ─── KEYFRAMES ─── */
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.6; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.2); }
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 30px rgba(212,175,55,0.4); }
+      50% { box-shadow: 0 0 60px rgba(212,175,55,0.7), 0 0 100px rgba(212,175,55,0.2); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes counter { from { opacity: 0; } to { opacity: 1; } }
+
+    .pulse-glow { animation: pulse-glow 2.5s ease infinite; }
+    .float-anim { animation: float 4s ease infinite; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero-content { align-items: center; text-align: center; padding: 120px 5% 80px; }
+      .hero-bullets { align-items: center; }
+      .hero-cta-group { justify-content: center; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .about-grid, .artist-grid { grid-template-columns: 1fr; gap: 50px; }
+      .about-image-wrap { order: -1; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: auto; grid-row: auto; }
+      .experience-cards { grid-template-columns: 1fr; }
+      .tickets-grid { grid-template-columns: 1fr; }
+      .ticket-card.featured { transform: none; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .tour-item { grid-template-columns: 70px 1fr; gap: 16px; padding: 22px 16px; }
+      .tour-cta { display: none; }
+      .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .artist-facts { grid-template-columns: 1fr; }
+      .tickets-grid { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Stars Background -->
+<canvas id="stars-canvas"></canvas>
+
+<!-- Mobile Nav Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose">✕</button>
+  <a href="#about" onclick="closeMobile()">Die Show</a>
+  <a href="#gallery" onclick="closeMobile()">Galerie</a>
+  <a href="#tickets" onclick="closeMobile()">Tickets</a>
+  <a href="#tour" onclick="closeMobile()">Tournee</a>
+  <a href="#artist" onclick="closeMobile()">Der Künstler</a>
+  <a href="#tour" class="btn-primary" onclick="closeMobile()" style="font-size:0.9rem; padding:16px 36px; margin-top:12px;">Tickets sichern</a>
+</div>
+
+<!-- Navigation -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <img src="DER%20HYPNOTISEUR%20-%20NEW%20LOGO%202026.png" alt="Der Hypnotiseur">
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Die Show</a></li>
+    <li><a href="#gallery">Galerie</a></li>
+    <li><a href="#tickets">Tickets</a></li>
+    <li><a href="#tour">Tournee</a></li>
+    <li><a href="#artist">Der Künstler</a></li>
+    <li><a href="#tour" class="nav-cta">Tickets sichern</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-img-wrap">
+    <img src="HERO%20BILD%20MIT%20LOGO%20TEXT%20UND%20BUTTON.jpg" alt="Comedy Hypnose Show – Lachen & Staunen Garantiert">
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Live auf der Bühne · Deutschland Tournee 2026</div>
+    <div class="hero-cta-group">
+      <a href="#tour" class="btn-primary pulse-glow">
+        🎟️ Jetzt Tickets sichern
+      </a>
+      <a href="#about" class="btn-secondary">
+        ▶ Mehr erfahren
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-number" data-target="500">0</div>
+      <div class="stat-label">Shows gespielt</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.1s">
+      <div class="stat-number" data-target="150000" data-suffix="+">0</div>
+      <div class="stat-label">begeisterte Zuschauer</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.2s">
+      <div class="stat-number" data-target="12">0</div>
+      <div class="stat-label">Jahre Bühnenerfahrung</div>
+    </div>
+    <div class="stat-item reveal" style="transition-delay:0.3s">
+      <div class="stat-number" data-target="100" data-suffix="%">0</div>
+      <div class="stat-label">Lachen garantiert</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal-left">
+      <img src="A1%20-%201%20-%20gemini-3-pro-image-preview-2k_a_Mach_der_Frau_gr%C3%B6%C3%9Fer%20(1)%20Kopie.png" alt="Comedy Hypnose Show">
+    </div>
+    <div class="about-content reveal-right">
+      <div class="section-label" style="justify-content:flex-start">Die Show</div>
+      <h2 class="section-title" style="text-align:left">Was dich<br><span>erwartet</span></h2>
+      <p style="color:var(--grey-light); font-size:1rem; line-height:1.9; margin-bottom:8px;">
+        Stell dir vor, Menschen aus deiner Mitte betreten die Bühne – und erleben in Minutenschnelle eine völlig andere Realität. Sie lachen, tanzen, träumen, staunen – und du mittendrin.
+      </p>
+      <p style="color:var(--grey-light); font-size:1rem; line-height:1.9;">
+        Die Comedy Hypnose Show verbindet professionelle Bühnenhypnose mit echtem Humor zu einem unvergesslichen Live-Erlebnis, das du so noch nie gesehen hast.
+      </p>
+      <div class="about-features">
+        <div class="about-feature">
+          <div class="about-feature-icon">🧠</div>
+          <div class="about-feature-text">
+            <h4>100% Echte Hypnose</h4>
+            <p>Keine Tricks, keine Schauspieler. Echte Menschen aus dem Publikum auf der Bühne.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">😂</div>
+          <div class="about-feature-text">
+            <h4>Comedy auf höchstem Niveau</h4>
+            <p>Jede Show ist einzigartig. Improvisation, Humor und magische Momente.</p>
+          </div>
+        </div>
+        <div class="about-feature">
+          <div class="about-feature-icon">⭐</div>
+          <div class="about-feature-text">
+            <h4>Für jeden geeignet</h4>
+            <p>Perfekt für Gruppen, Betriebsfeiern, Paare und alle, die Außergewöhnliches erleben wollen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GALLERY
+══════════════════════════════════════ -->
+<section id="gallery">
+  <div class="reveal">
+    <div class="section-label">Live Impressionen</div>
+    <h2 class="section-title">Momente, die <span>unvergesslich</span> bleiben</h2>
+    <p class="section-subtitle">Jede Show ist ein einzigartiges Erlebnis. Diese Bilder zeigen nur einen kleinen Teil der Magie.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item" style="min-height:480px">
+      <img src="3.png" alt="Comedy Hypnose Show Live" style="height:100%">
+      <span class="gallery-label">Die Bühne</span>
+    </div>
+    <div class="gallery-item">
+      <img src="1.png" alt="Hypnose Live">
+      <span class="gallery-label">Hypnose Moment</span>
+    </div>
+    <div class="gallery-item">
+      <img src="2.png" alt="Comedy Show">
+      <span class="gallery-label">Comedy pur</span>
+    </div>
+    <div class="gallery-item">
+      <img src="4.png" alt="Show Moment">
+      <span class="gallery-label">Magie live</span>
+    </div>
+    <div class="gallery-item">
+      <img src="5.png" alt="Publikum">
+      <span class="gallery-label">Begeisterung</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════ -->
+<section id="experience">
+  <div class="reveal">
+    <div class="section-label">Das Erlebnis</div>
+    <h2 class="section-title">Warum diese Show <span>anders</span> ist</h2>
+    <p class="section-subtitle">Kein Abend gleicht dem anderen. Das ist das Geheimnis der Comedy Hypnose Show.</p>
+  </div>
+  <div class="experience-cards">
+    <div class="exp-card reveal" style="transition-delay:0s">
+      <div class="exp-icon">🎭</div>
+      <h3>Echte Menschen. Echte Momente.</h3>
+      <p>Keine eingeweihten Helfer. Nur echte Freiwillige aus dem Publikum – und jede Show ist eine neue Überraschung.</p>
+    </div>
+    <div class="exp-card reveal" style="transition-delay:0.15s">
+      <div class="exp-icon">⚡</div>
+      <h3>Energie, die du spürst</h3>
+      <p>Von der ersten Sekunde an packt dich die Atmosphäre. Lachen, Staunen und Gänsehaut im Wechsel – guaranteed.</p>
+    </div>
+    <div class="exp-card reveal" style="transition-delay:0.3s">
+      <div class="exp-icon">🌟</div>
+      <h3>Unvergessliche Erinnerungen</h3>
+      <p>Alle, die auf der Bühne waren, berichten noch Jahre später davon. Du wirst diese Nacht nie vergessen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TICKETS
+══════════════════════════════════════ -->
+<section id="tickets">
+  <div class="reveal">
+    <div class="section-label">Tickets</div>
+    <h2 class="section-title">Dein <span>Erlebnis</span> wählen</h2>
+    <p class="section-subtitle">Von der ersten Reihe bis zum ultimativen VIP-Paket – für jeden ist das Richtige dabei.</p>
+  </div>
+  <div class="tickets-grid reveal">
+    <div class="ticket-card">
+      <div class="ticket-tier">Standard</div>
+      <div class="ticket-price"><span>€</span>29<span style="font-size:1rem; color:var(--grey-mid)">*</span></div>
+      <p class="ticket-note">* Beispielpreis · variiert je nach Stadt</p>
+      <ul class="ticket-features">
+        <li>Einlass & Show</li>
+        <li>Freie Sitzplatzwahl</li>
+        <li class="no">Erste Reihen</li>
+        <li class="no">Meet & Greet</li>
+        <li class="no">Fan-Paket</li>
+      </ul>
+      <a href="#tour" class="btn-ticket btn-ticket-outline">Ticket buchen</a>
+    </div>
+
+    <div class="ticket-card featured">
+      <div class="ticket-tier">VIP Erlebnis</div>
+      <div class="ticket-price"><span>€</span>69<span style="font-size:1rem; color:var(--grey-mid)">*</span></div>
+      <p class="ticket-note">* Beispielpreis · variiert je nach Stadt</p>
+      <ul class="ticket-features">
+        <li>Einlass & Show</li>
+        <li>Erste Reihen – bester Blick</li>
+        <li>Exklusives Meet & Greet</li>
+        <li>Persönliches Foto</li>
+        <li>Fan-Paket & Autogramm</li>
+      </ul>
+      <a href="#tour" class="btn-ticket btn-ticket-gold">VIP sichern →</a>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-tier">Gruppen</div>
+      <div class="ticket-price" style="font-size:2rem; padding-top:8px; color:var(--gold)">Anfragen</div>
+      <p class="ticket-note">Ab 10 Personen · Sonderkonditionen</p>
+      <ul class="ticket-features">
+        <li>Gruppenrabatt</li>
+        <li>Reservierte Sitzblöcke</li>
+        <li>Persönliche Betreuung</li>
+        <li>Betriebsfeiern & Events</li>
+        <li>Individuelle Pakete</li>
+      </ul>
+      <a href="mailto:info@comedyhypnoseshow.de" class="btn-ticket btn-ticket-outline">Jetzt anfragen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="section-label">Stimmen</div>
+    <h2 class="section-title">Was das <span>Publikum</span> sagt</h2>
+    <p class="section-subtitle">Mehr als 150.000 begeisterte Zuschauer können nicht irren.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">„Ich habe noch nie so viel gelacht in meinem Leben! Mein Mann war auf der Bühne und hat getanzt wie ein Profi – er kann das sonst überhaupt nicht! Absolut unglaublich."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SM</div>
+        <div>
+          <div class="testi-name">Sandra M.</div>
+          <div class="testi-city">Dortmund</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">„Das war die beste Show, die ich je gesehen habe – und ich war in vielen. Die Energie im Saal war elektrisierend. Tränen gelacht, Gänsehaut gehabt, alles an einem Abend."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">MK</div>
+        <div>
+          <div class="testi-name">Markus K.</div>
+          <div class="testi-city">Hamburg</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">„Ich war selbst auf der Bühne – ich erinnere mich an gar nichts, aber alle Videos beweisen: Ich war eine andere Person! Es war das unvergesslichste Erlebnis meines Lebens."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AW</div>
+        <div>
+          <div class="testi-name">Andrea W.</div>
+          <div class="testi-city">Berlin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TOUR DATES
+══════════════════════════════════════ -->
+<section id="tour">
+  <div class="tour-header reveal">
+    <div class="section-label">Tournee 2026</div>
+    <h2 class="section-title">Wähle deine <span>Stadt</span></h2>
+    <p class="section-subtitle">Sicher dir jetzt Tickets für die Show in deiner Nähe – bevor es zu spät ist.</p>
+  </div>
+
+  <div class="tour-list">
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.0s">
+      <div class="tour-date">
+        <div class="tour-date-day">07</div>
+        <div class="tour-date-month">Mär 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Musterstadt</div>
+        <div class="tour-venue">Stadthalle Musterstadt · 20:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-available">Verfügbar</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.07s">
+      <div class="tour-date">
+        <div class="tour-date-day">14</div>
+        <div class="tour-date-month">Mär 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Beispielstadt</div>
+        <div class="tour-venue">Kulturzentrum Beispielstadt · 19:30 Uhr</div>
+      </div>
+      <span class="tour-badge badge-limited">Wenige Karten</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.14s">
+      <div class="tour-date">
+        <div class="tour-date-day">21</div>
+        <div class="tour-date-month">Mär 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Demostadt</div>
+        <div class="tour-venue">Theater am Marktplatz · 20:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-available">Verfügbar</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.21s">
+      <div class="tour-date">
+        <div class="tour-date-day">28</div>
+        <div class="tour-date-month">Mär 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Teststadt Nord</div>
+        <div class="tour-venue">Kongresshalle Teststadt · 19:30 Uhr</div>
+      </div>
+      <span class="tour-badge badge-available">Verfügbar</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.28s">
+      <div class="tour-date">
+        <div class="tour-date-day">04</div>
+        <div class="tour-date-month">Apr 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Musterdorf</div>
+        <div class="tour-venue">Bürgerzentrum Musterdorf · 20:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-limited">Wenige Karten</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.35s">
+      <div class="tour-date">
+        <div class="tour-date-day">11</div>
+        <div class="tour-date-month">Apr 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Probestadt</div>
+        <div class="tour-venue">Eventhaus Probestadt · 20:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-available">Verfügbar</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.42s">
+      <div class="tour-date">
+        <div class="tour-date-day">18</div>
+        <div class="tour-date-month">Apr 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Beispieldorf</div>
+        <div class="tour-venue">Mehrzweckhalle Beispieldorf · 19:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-sold">Ausverkauft</span>
+      <span class="tour-cta" style="opacity:0.4; pointer-events:none">Ausverkauft</span>
+    </a>
+
+    <a href="#" class="tour-item reveal" style="transition-delay:0.49s">
+      <div class="tour-date">
+        <div class="tour-date-day">25</div>
+        <div class="tour-date-month">Apr 2026</div>
+      </div>
+      <div class="tour-info">
+        <div class="tour-city">Neustadt</div>
+        <div class="tour-venue">Stadthalle Neustadt · 20:00 Uhr</div>
+      </div>
+      <span class="tour-badge badge-available">Verfügbar</span>
+      <span class="tour-cta">Tickets → Eventim</span>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ARTIST
+══════════════════════════════════════ -->
+<section id="artist">
+  <div class="artist-grid">
+    <div class="artist-image-wrap reveal-left float-anim">
+      <div class="artist-glow"></div>
+      <img src="DE_Pressefoto_Querformat_Motiv%2003%20(Credit%20_%20Michelle%20Glorius).png" alt="Der Hypnotiseur">
+    </div>
+    <div class="artist-content reveal-right">
+      <div class="section-label" style="justify-content:flex-start">Der Künstler</div>
+      <h2 class="artist-name">Der Hypnotiseur</h2>
+      <p class="artist-title-text">Deutschlands führender Comedy-Hypnotiseur</p>
+      <p class="artist-bio">
+        Mit über 500 Shows und mehr als 150.000 begeisterten Zuschauern zählt er zu den gefragtesten Hypnose-Entertainern im deutschsprachigen Raum. Seine einzigartige Kombination aus professioneller Bühnenhypnose und natürlichem Komödientalent macht jede Show zu einem unvergesslichen Erlebnis.
+      </p>
+      <p class="artist-bio">
+        Ob kleine Bühne oder großes Theater – seine Energie, sein Charisma und seine Fähigkeit, Menschen in Sekundenschnelle zu hypnotisieren, faszinieren Zuschauer jedes Alters.
+      </p>
+      <div class="artist-facts">
+        <div class="artist-fact">Über 500 Shows gespielt</div>
+        <div class="artist-fact">12+ Jahre Bühnenerfahrung</div>
+        <div class="artist-fact">150.000+ Zuschauer</div>
+        <div class="artist-fact">Deutschlandweite Tourneen</div>
+        <div class="artist-fact">TV & Medienauftritte</div>
+        <div class="artist-fact">Betriebsevents & Galas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section id="faq">
+  <div class="reveal">
+    <div class="section-label">Häufige Fragen</div>
+    <h2 class="section-title">Alles was du <span>wissen</span> möchtest</h2>
+    <p class="section-subtitle">Antworten auf die häufigsten Fragen zur Comedy Hypnose Show.</p>
+  </div>
+  <div class="faq-list reveal">
+    <div class="faq-item">
+      <div class="faq-question">Ist Hypnose wirklich echt?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Ja, absolut. Es handelt sich um echte Bühnenhypnose – keine Schauspieler, keine eingeweihten Helfer. Alle Teilnehmer auf der Bühne sind freiwillige Zuschauer aus dem Publikum.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Kann ich gegen meinen Willen hypnotisiert werden?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Nein. Hypnose funktioniert nur mit Einverständnis. Niemand wird gegen seinen Willen auf die Bühne gebeten und jeder Teilnehmer kann jederzeit aufhören.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Werde ich mich an alles erinnern?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Das ist individuell unterschiedlich. Viele Teilnehmer erinnern sich sehr gut, andere kaum – das ist völlig normal und ein Teil des Erlebnisses.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Wie lange dauert die Show?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Die Show dauert in der Regel ca. 2 Stunden inklusive Pause. Ein Abend, der wie Minuten vergeht!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Ist die Show für Kinder geeignet?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Die Comedy Hypnose Show ist eine Veranstaltung für Erwachsene und Jugendliche ab 16 Jahren. Alle Inhalte sind familienfreundlich und humorvoll.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Kann ich die Show als Firmenevent buchen?<span class="faq-icon">+</span></div>
+      <div class="faq-answer">Ja! Die Comedy Hypnose Show eignet sich hervorragend für Betriebsfeiern, Weihnachtsfeiern, Galas und Corporate Events. Schreib uns einfach eine E-Mail für ein individuelles Angebot.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════ -->
+<section id="final-cta">
+  <div class="final-cta-content reveal">
+    <p class="final-cta-eyebrow">✦ Deutschland Tournee 2026 ✦</p>
+    <h2 class="final-cta-title">Erlebe die Show,<br>die alles verändert.</h2>
+    <p class="final-cta-sub">Tickets sind begrenzt. Jetzt sichern – bevor deine Stadt ausverkauft ist.</p>
+    <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+      <a href="#tour" class="btn-primary pulse-glow" style="font-size:1.05rem; padding:20px 50px;">
+        🎟️ Jetzt Tickets sichern
+      </a>
+    </div>
+    <p style="margin-top:24px; font-size:0.82rem; color:var(--grey-mid);">
+      Tickets über Eventim · Sicherer Kauf · Sofortiger Download
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="COMEDY%20HYPNOSE%20SHOW_LOGO.png" alt="Comedy Hypnose Show">
+      </div>
+      <p class="footer-desc">Die Comedy Hypnose Show ist Deutschlands spektakulärste Hypnose-Entertainment-Show. Lachen & Staunen garantiert.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn" title="Instagram">📷</a>
+        <a href="#" class="social-btn" title="Facebook">👍</a>
+        <a href="#" class="social-btn" title="YouTube">▶</a>
+        <a href="#" class="social-btn" title="TikTok">♪</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Show</h4>
+      <ul>
+        <li><a href="#about">Die Show</a></li>
+        <li><a href="#gallery">Galerie</a></li>
+        <li><a href="#experience">Das Erlebnis</a></li>
+        <li><a href="#artist">Der Künstler</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Tickets</h4>
+      <ul>
+        <li><a href="#tickets">Standard Ticket</a></li>
+        <li><a href="#tickets">VIP Erlebnis</a></li>
+        <li><a href="#tickets">Gruppenanfrage</a></li>
+        <li><a href="#tour">Alle Termine</a></li>
+        <li><a href="mailto:info@comedyhypnoseshow.de">Kontakt</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Comedy Hypnose Show · www.COMEDYHYPNOSESHOW.de</div>
+    <div class="footer-legal">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="mailto:info@comedyhypnoseshow.de">Kontakt</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+/* Stars Canvas */
+(function() {
+  const canvas = document.getElementById('stars-canvas');
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); createStars(); });
+
+  function createStars() {
+    stars = [];
+    const count = Math.floor((W * H) / 3000);
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.4 + 0.2,
+        a: Math.random(),
+        speed: Math.random() * 0.4 + 0.05,
+        twinkle: Math.random() * Math.PI * 2
+      });
+    }
+  }
+  createStars();
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    const t = Date.now() / 1000;
+    stars.forEach(s => {
+      s.twinkle += s.speed * 0.015;
+      const alpha = 0.3 + 0.7 * Math.abs(Math.sin(s.twinkle));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${alpha * s.a})`;
+      ctx.fill();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* Nav scroll */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+/* Mobile menu */
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', closeMobile);
+function closeMobile() {
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+
+/* Hero parallax */
+const heroBg = document.querySelector('.hero-img-wrap img');
+if (heroBg) {
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < heroBg.offsetHeight) {
+      heroBg.style.transform = `scale(1.02) translateY(${y * 0.15}px)`;
+    }
+  }, { passive: true });
+}
+
+/* Reveal on scroll */
+const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+/* Counter animation */
+function animateCounter(el, target, suffix) {
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const value = Math.round(eased * target);
+    el.textContent = value.toLocaleString('de-DE') + (suffix || '');
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const el = e.target;
+      const target = parseInt(el.dataset.target);
+      const suffix = el.dataset.suffix || '';
+      animateCounter(el, target, suffix);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+/* FAQ accordion */
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+/* Smooth anchor */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
