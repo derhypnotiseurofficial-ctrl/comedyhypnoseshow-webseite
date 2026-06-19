@@ -12,7 +12,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap"></noscript>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1022,7 +1024,7 @@
 <!-- Navigation -->
 <nav id="mainNav">
   <div class="nav-logo">
-    <img src="img/logo-artist.webp" alt="Der Hypnotiseur">
+    <img src="img/logo-artist.webp" alt="Der Hypnotiseur" width="280" height="157" loading="eager">
   </div>
   <ul class="nav-links">
     <li><a href="#about">Die Show</a></li>
@@ -1042,7 +1044,7 @@
 ══════════════════════════════════════ -->
 <section id="hero">
   <div class="hero-img-wrap">
-    <img src="img/hero.webp" alt="Comedy Hypnose Show – Lachen & Staunen Garantiert">
+    <img src="img/hero.webp" alt="Comedy Hypnose Show – Lachen & Staunen Garantiert" width="1200" height="677" fetchpriority="high" loading="eager">
   </div>
   <div class="hero-content">
     <div class="hero-badge">Live auf der Bühne · Deutschland Tournee 2026</div>
@@ -1087,7 +1089,7 @@
 <section id="about">
   <div class="about-grid">
     <div class="about-image-wrap reveal-left">
-      <img src="img/performer.webp" alt="Comedy Hypnose Show">
+      <img src="img/performer.webp" alt="Comedy Hypnose Show" width="750" height="750" loading="lazy">
     </div>
     <div class="about-content reveal-right">
       <div class="section-label" style="justify-content:flex-start">Die Show</div>
@@ -1136,19 +1138,19 @@
   </div>
   <div class="gallery-grid reveal">
 <div class="gallery-item">
-      <img src="img/show-1.webp" alt="Hypnose Live">
+      <img src="img/show-1.webp" alt="Hypnose Live" width="750" height="750" loading="lazy">
       <span class="gallery-label">Hypnose Moment</span>
     </div>
     <div class="gallery-item">
-      <img src="img/show-2.webp" alt="Comedy Show">
+      <img src="img/show-2.webp" alt="Comedy Show" width="750" height="750" loading="lazy">
       <span class="gallery-label">Comedy pur</span>
     </div>
     <div class="gallery-item">
-      <img src="img/show-4.webp" alt="Show Moment">
+      <img src="img/show-4.webp" alt="Show Moment" width="750" height="750" loading="lazy">
       <span class="gallery-label">Magie live</span>
     </div>
     <div class="gallery-item">
-      <img src="img/show-5.webp" alt="Publikum">
+      <img src="img/show-5.webp" alt="Publikum" width="750" height="750" loading="lazy">
       <span class="gallery-label">Begeisterung</span>
     </div>
   </div>
@@ -1408,7 +1410,7 @@
   <div class="artist-grid">
     <div class="artist-image-wrap reveal-left float-anim">
       <div class="artist-glow"></div>
-      <img src="img/artist.webp" alt="Der Hypnotiseur">
+      <img src="img/artist.webp" alt="Der Hypnotiseur" width="800" height="453" loading="lazy">
     </div>
     <div class="artist-content reveal-right">
       <div class="section-label" style="justify-content:flex-start">Der Künstler</div>
@@ -1495,7 +1497,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">
-        <img src="img/logo-show.webp" alt="Comedy Hypnose Show">
+        <img src="img/logo-show.webp" alt="Comedy Hypnose Show" width="96" height="120" loading="lazy">
       </div>
       <p class="footer-desc">Die Comedy Hypnose Show ist Deutschlands spektakulärste Hypnose-Entertainment-Show. Lachen & Staunen garantiert.</p>
       <div class="footer-social">
