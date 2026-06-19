@@ -107,20 +107,14 @@
       position: relative;
       width: 100%;
       line-height: 0;
+      overflow: hidden;
     }
     .hero-img-wrap img {
       width: 100%;
       height: auto;
       display: block;
     }
-    .hero-img-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 60px;
-      background: linear-gradient(to top, rgba(10,0,21,1) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    .hero-img-wrap::after { display: none; }
     .hero-content {
       position: relative;
       z-index: 2;
