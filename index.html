@@ -372,7 +372,6 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
       gap: 12px;
       max-width: 1200px;
       margin: 0 auto;
@@ -382,15 +381,13 @@
       border-radius: 4px;
       position: relative;
       cursor: pointer;
-    }
-    .gallery-item:first-child {
-      grid-column: 1 / 2;
-      grid-row: 1 / 3;
+      aspect-ratio: 4 / 3;
     }
     .gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: block;
       transition: transform 0.5s ease, filter 0.5s ease;
       filter: brightness(0.85) saturate(1.1);
@@ -1138,8 +1135,8 @@
     <p class="section-subtitle">Jede Show ist ein einzigartiges Erlebnis. Diese Bilder zeigen nur einen kleinen Teil der Magie.</p>
   </div>
   <div class="gallery-grid reveal">
-    <div class="gallery-item" style="min-height:480px">
-      <img src="img/show-3.webp" alt="Comedy Hypnose Show Live" style="height:100%">
+    <div class="gallery-item">
+      <img src="img/show-3.webp" alt="Comedy Hypnose Show Live">
       <span class="gallery-label">Die Bühne</span>
     </div>
     <div class="gallery-item">
