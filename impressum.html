@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impressum – Comedy Hypnose Show</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMZB64MVFL"></script>
+  <!-- Google Analytics 4 mit Consent Mode -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', wait_for_update: 500 });
     gtag('js', new Date());
-    gtag('config', 'G-EMZB64MVFL');
+    gtag('config', 'G-EMZB64MVFL', { anonymize_ip: true });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMZB64MVFL"></script>
+  <script>
+    var c = localStorage.getItem('cookie_consent');
+    if (c === 'accepted') gtag('consent', 'update', { analytics_storage: 'granted' });
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
